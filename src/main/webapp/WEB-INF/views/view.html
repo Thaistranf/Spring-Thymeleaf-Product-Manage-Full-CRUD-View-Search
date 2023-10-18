@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <style>
+    th, td, h1{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<a th:href="@{/product/list}">Back to product list</a>
+
+<table class="table table-striped table-dark">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price</th>
+    <th scope="col">Description</th>
+    <th scope="col">Brand</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${productV.id}"></td>
+    <td th:text="${productV.name}"></td>
+    <td th:text="${productV.price}"></td>
+    <td th:text="${productV.description}"></td>
+    <td th:text="${productV.brand}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!--<div>-->
+<!--  <div>-->
+<!--    <label>Product name:</label>-->
+<!--    <label th:text="${productV.name}"></label>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label>Price:</label>-->
+<!--    <label th:text="${productV.price}"></label>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label>Description:</label>-->
+<!--    <label th:text="${productV.description}"></label>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label>Brand:</label>-->
+<!--    <label th:text="${productV.brand}"></label>-->
+<!--  </div>-->
+<!--</div>-->
+</body>
+</html>
