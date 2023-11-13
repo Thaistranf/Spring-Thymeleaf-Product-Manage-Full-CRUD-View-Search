@@ -4,10 +4,7 @@ import Service.ProductService;
 import model.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -84,15 +81,10 @@ public class ProductController {
         return "/view";
     }
 
-//    @GetMapping("/search/{id}")
-//    public String formSearch(@PathVariable int id, Model model){
-//        model.addAttribute("productSearch", productService.findById(id));
-//        return "/search";
-//    }
-//
-//    @PostMapping("/search/{id}")
-//    public String search(@PathVariable int id, Model model){
-//        model.addAttribute("productS", productService.findById(id));
-//        return "/search";
-//    }
+    @GetMapping("/search")
+    public String formSearch(@RequestParam("keyword") String keyword, Model model){
+        List<Product> productSearch = productService.search(keyword);
+        model.addAttribute("productS", productSearch);
+        return "/list";
+    }
 }

@@ -4,6 +4,7 @@ import model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductService implements IProductService{
     //Tao 1 doi tuong list de luu thong tin product
@@ -64,6 +65,13 @@ public class ProductService implements IProductService{
         }
         //id khong ton tai tra ve null
         return null;
+    }
+
+    @Override
+    public List<Product> search(String keyword) {
+        return productList.stream()
+                .filter(product -> product.getName().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
 }
