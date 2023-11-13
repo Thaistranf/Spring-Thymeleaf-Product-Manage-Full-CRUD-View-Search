@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -26,7 +27,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         this.applicationContext = applicationContext;
     }
 
-    //Thymeleaf
+    // 3 cai bean sau cau hinh Thymeleaf + ViewResolver
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -51,5 +52,15 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
+    }
+
+    // Cau hinh cho uploadFile
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver getResolver(){
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        //Thiet lap dung luong lon nhat cua file duoc phep tai len
+        resolver.setMaxUploadSizePerFile(5242888);  // 5MB
+
+        return resolver;
     }
 }

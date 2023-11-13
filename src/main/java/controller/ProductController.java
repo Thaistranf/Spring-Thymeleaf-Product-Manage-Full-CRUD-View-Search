@@ -2,6 +2,7 @@ package controller;
 
 import Service.ProductService;
 import model.Product;
+import model.Upload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -86,5 +87,18 @@ public class ProductController {
         List<Product> productSearch = productService.search(keyword);
         model.addAttribute("productS", productSearch);
         return "/list";
+    }
+
+    @GetMapping("/upload")
+    public ModelAndView uploadForm(){
+        ModelAndView modelAndView = new ModelAndView("/uploadFile");
+        modelAndView.addObject("upload", new Upload());
+        return modelAndView;
+    }
+
+    @PostMapping("/upload")
+    public ModelAndView upload(Upload upload){
+        ModelAndView modelAndView = new ModelAndView("");
+        return modelAndView;
     }
 }
