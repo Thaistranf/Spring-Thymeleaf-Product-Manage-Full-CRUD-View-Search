@@ -54,13 +54,4 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return viewResolver;
     }
 
-    // Cau hinh cho uploadFile
-    @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver getResolver(){
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        //Thiet lap dung luong lon nhat cua file duoc phep tai len
-        resolver.setMaxUploadSizePerFile(5242888);  // 5MB
-
-        return resolver;
-    }
 }
